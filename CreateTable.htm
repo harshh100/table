@@ -1,41 +1,56 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <title></title>
     <style type="text/css">
-        body
-        {
+        body {
             font-family: Arial;
             font-size: 10pt;
         }
-        table
-        {
+
+        table {
             border: 1px solid #ccc;
             border-collapse: collapse;
         }
-        table th
-        {
+
+        table th {
             background-color: #F7F7F7;
             color: #333;
             font-weight: bold;
         }
-        table th, table td
-        {
+
+        table th,
+        table td {
             padding: 5px;
             border-color: #ccc;
         }
     </style>
 </head>
+
 <body>
     <input type="button" value="Generate Table" onclick="GenerateTable()" />
     <hr />
-   <table>
-    <tr>
-        <th>
+    <!-- table>tr*2>td*3 -->
+    <table>
+        <tr>
+            <th>
             <td></td>
             <td></td>
             <td></td>
 
+            </th>
+            <th>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
         </th>
         <th>
             <tr>
@@ -49,20 +64,8 @@
                 <td></td>
             </tr>
         </th>
-        <th>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </th>
-    </tr>
-   </table>
+        </tr>
+    </table>
     <div id="dvTable">
     </div>
     <script type="text/javascript">
@@ -98,9 +101,9 @@
                 for (var j = 0; j < columnCount; j++) {
                     var cell = row.insertCell();
                     cell.innerHTML = customers[i][j];
-                    
+
                 }
-                
+
             }
 
             var dvTable = document.getElementById("dvTable");
@@ -109,4 +112,5 @@
         }
     </script>
 </body>
+
 </html>
