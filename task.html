@@ -53,7 +53,6 @@
             min-width: 48%;
             float: right;
             height: 25px;
-            /* text-transform: uppercase; */
             font-family: 'Cuprum', serif;
             letter-spacing: 2px;
         }
@@ -68,6 +67,11 @@
 
         .add {
             width: -webkit-fill-available;
+            min-width: 48%;
+            height: 25px;
+            text-transform: uppercase;
+            font-family: 'Cuprum', serif;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -80,17 +84,16 @@
 
         window.onload = function () {
             //Build an array containing Customer records.
-            students.push(["Abc", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
-            students.push(["1", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
-            students.push(["2", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
-            students.push(["3", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
-            students.push(["4", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
-            students.push(["5", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
-            students.push(["6", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
-            students.push(["7", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
-            students.push(["8", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
-            students.push(["9", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
-            students.push(["10", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
+            students.push(["H", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
+            students.push(["A", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
+            students.push(["R", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
+            students.push(["S", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
+            students.push(["H", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
+            students.push(["P", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
+            students.push(["A", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
+            students.push(["T", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
+            students.push(["E", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
+            students.push(["L", "21CE090", "1234567890", "21CE090@CHARUSAT.EDU.IN"]);
             renderTable();
             renderPagination();
         };
@@ -146,22 +149,21 @@
             var ID = document.getElementById("ID");
             var Phone_No = document.getElementById("Phone_No");
             var Email = document.getElementById("Email");
-            // if (Name.value === "" || ID.value === "" || Phone_No.value === "" || Email.value === "") {
-            // alert("Enter the input");
-            // } else {
-            students.push([Name.value, ID.value, Phone_No.value, Email.value]);
-            Name.value = "";
-            ID.value = "";
-            Phone_No.value = "";
-            Email.value = "";
-            renderTable();
-            renderPagination();
-            // }
+            if (Name.value === "" || ID.value === "" || Phone_No.value === "" || Email.value === "") {
+                alert("Enter the input");
+            } else {
+                students.unshift([Name.value, ID.value, Phone_No.value, Email.value]);
+                Name.value = "";
+                ID.value = "";
+                Phone_No.value = "";
+                Email.value = "";
+                renderTable();
+                renderPagination();
+            }
 
         }
 
         function Remove(button) {
-            //Determine the reference of the Row using the Button.
             let startIndex = (currentPage - 1) * rowsPerPage;
             var row = button.parentNode.parentNode;
             console.log("rowIndex : " + row.rowIndex);
@@ -169,15 +171,11 @@
             var Name = row.getElementsByTagName("TD")[0].innerHTML;
             if (confirm("Do you want to delete Record Of " + Name)) {
 
-                //Get the reference of the Table.
                 var table = document.getElementById("tblCustomers");
 
-                //Delete the Table row using its Index.
-                // console.log("row.rowIndex : " + row.rowIndex, "  row : " + row,);
                 let delete_index = startIndex + row.rowIndex - 1
                 console.log("delete_idex :" + delete_index);
                 students.splice(delete_index, 1);
-                // table.deleteRow(row.rowIndex);
                 renderTable();
                 renderPagination();
             }
